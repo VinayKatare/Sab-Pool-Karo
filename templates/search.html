@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block body %}
+   {% if not flag %}
+       {% include "nav.html" %}
+   {% else %}
+       {% include "protectnav.html" %}
+    {% endif %}
+
+   <div class="container">
+           <form method="GET" action="/searchresult" style="height: 92vh; padding-top: 40vh">
+               <div class="row">
+                   <div class="input-field col s5">
+                           <select name="source">
+                               <option value="" disabled selected>Source</option>
+                               <option value="1">A</option>
+                               <option value="2">B</option>
+                               <option value="3">C</option>
+                               <option value="4">D</option>
+                               <option value="5">E</option>
+                           </select>
+                           <label>Source</label>
+                       </div>
+
+                       <div class="input-field col s5">
+                           <select name="destination">
+                               <option value="" disabled selected>Destination</option>
+                               <option value="1">A</option>
+                               <option value="2">B</option>
+                               <option value="3">C</option>
+                               <option value="4">D</option>
+                               <option value="5">E</option>
+                           </select>
+                           <label>Destination</label>
+                       </div>
+
+                       <button class="col s2 btn waves-effect waves-light" type="submit" name="action">Submit
+                               <i class="material-icons right">send</i>
+                           </button>
+                   </div>
+               </form>
+   </div>
+   <script>
+       document.addEventListener('DOMContentLoaded', function() {
+       var elems = document.querySelectorAll('select');
+       var instances = M.FormSelect.init(elems, {});
+     });
+   </script>
+
+{% endblock %}
+

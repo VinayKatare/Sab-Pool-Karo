@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block body %}
+   {% if not flag %}
+       {% include "nav.html" %}
+   {% else %}
+       {% include "protectnav.html" %}
+   {% endif %}
+
+    {%if (l != 0): %}
+        {% for i in range(l) %}
+
+                <div class="row" style="padding-left: 13vw">
+                        <div class="col s12 m10">
+                          <div class="card horizontal">
+                            <div class="card-image">
+                              <!--<img src="https://images.pexels.com/photos/1131387/pexels-photo-1131387.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260">-->
+                              <!--<span class="card-title"></span>-->
+                            </div>
+                            <div class="card-stacked">
+                            <div class="card-content">
+                              <table class="col s12 white centered">
+                                   <thead>
+                                       <tr>
+                                           <th>All</th>
+                                           <th>Details</th>
+                                       </tr>
+                                   </thead>
+
+                                   <tbody>
+                                        <tr>
+                                           <td>Name</td>
+                                           <td>{{ rows[i].name }}<tr>
+                                       </tr>
+
+                                       <tr>
+                                           <td>Email</td>
+                                           <td>{{ rows[i].email }}</td>
+                                       </tr>
+
+                                       <tr>
+                                           <td>Cost</td>
+                                           <td>₹ {{ (rows[i].cost) }}</td>
+                                       </tr>
+
+                                       <tr>
+                                           <td>Source -> Destination</td>
+                                           <td>{{ rows[i].src_name + " -> " +  rows[i].dest_name}}</td>
+                                       </tr>
+
+                                       <tr>
+                                           <td>Time</td>
+                                           <td>{{ rows[i].time }}</td>
+                                       </tr>
+
+                                       <tr>
+                                           <td>Gender</td>
+                                           <td>{{ rows[i].gender }}</td>
+                                       </tr>
+
+                                       <tr>
+                                           <td>Phone</td>
+                                           <td>{{ rows[i].mobile }}</td>
+                                       </tr>
+
+                                       <tr>
+                                           <td>Car</td>
+                                           <td>{{ rows[i].car }}</td>
+                                       </tr>
+
+                                       <tr>
+                                           <td></td>
+                                           <td><a href={{ "/requestpool?poolid=" + rows[i].poolid|string }} class="btn waves-effect waves-light red">Request Now</a></td>
+                                       </tr>
+
+                               </tbody>
+
+                            </table>
+
+                            </div>
+                            <!--<div class="deep-orange lighten-4 card-action">-->
+                                <!-- <a href=<%= "/providerProfile?id=" + rows[i].providerId %> class="btn-floating btn-large  waves-effect waves-light red"><i class="material-icons">arrow_forward</i></a> -->
+                                 <!--<a href={{ "/requestpool?poolid=" + rows[i].poolid|string }} class="btn-floating btn-large  waves-effect waves-light red"><i class="material-icons">chevron_right</i></a>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
+    {% else %}
+        <h1 class="center-align">Sorry! No results found!</h1>
+    {% endif %}
+
+{% endblock %}

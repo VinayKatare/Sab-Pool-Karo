@@ -1,0 +1,143 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    {% if not flag %}
+        {% include "nav.html" %}
+    {% else %}
+        {% include "protectnav.html" %}
+    {% endif %}
+
+    <style>
+            .tabs .tab a{
+                    color:#000;
+                } /*Black color to the text*/
+        
+                .tabs .tab a:hover {
+                    background-color:#e65100;
+                    color:#000;
+                } /*Text color on hover*/
+        
+                .tabs .tab a.active {
+                    background-color:#ff9800;
+                    color:#000;
+                } /*Background and text color when a tab is active*/
+        
+                .tabs .indicator {
+                    background-color:#e65100;
+                } /*Color of underline*/
+        </style>
+
+<h1 class="center-align">My Pools!</h1>
+<div class="container">
+    {% if ((l + l1+l2) > 0) %}
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs">
+                <li class="tab col s4"><a class="active" href="#request">Requested Pools</a></li>
+                <li class="tab col s4"><a href="#accept">Accepted Orders</a></li>
+                <li class="tab col s4"><a href="#reject">Rejected Orders</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="request">
+            <table class="white centered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Mobile</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for i in range(l) %}
+                    <tr>
+                        <td>{{ i+1 }}</td>
+                        <td>{{ req[i].name }}</td>
+                        <td>{{ req[i].email }}</td>
+                        <td>{{ req[i].mobile }}</td>
+                        <td>{{ req[i].status }}</td>
+                    </tr>
+                    {% endfor %}
+                    
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a href="/acceptrequest" class="btn deep-orange">Accept Request</a></td>
+                        <td><a href="/rejectrequest" class="btn deep-orange">Reject Request</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="accept">
+                <table class="white centered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Mobile</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+                            {% for i in range(l1) %}
+                            <tr>
+                                <td>{{ i+1 }}</td>
+                                <td>{{ accreq[i].name }}</td>
+                                <td>{{ accreq[i].email }}</td>
+                                <td>{{ accreq[i].status }}</td>
+                                <td>{{ accreq[i].mobile }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+        </div>
+
+        <div id="reject">
+                <table class="white centered">
+                    <thead>
+                        <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Mobile</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+                            {% for i in range(l2) %}
+                            <tr>
+                                <td>{{ i+1 }}</td>
+                                <td>{{ rejreq[i].name }}</td>
+                                <td>{{ rejreq[i].email }}</td>
+                                <td>{{ rejreq[i].status }}</td>
+                                <td>{{ rejreq[i].mobile }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+        </div>
+    {% else %}
+        <h2 class="center-align white">Sorry! No results found!</h2>
+    {% endif %}
+</div>
+
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('.tooltipped').tooltip();
+    $('.tabs').tabs();
+    });
+</script>
+
+
+{% endblock %}

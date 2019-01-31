@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block body %}
+   {% if not flag %}
+       {% include "nav.html" %}
+   {% else %}
+       {% include "protectnav.html" %}
+   {% endif %}
+  
+   <div class="container">
+           <h1>Pool Page</h1>
+           <div class="row">
+               <form class="col s12" action="/createpool" method="POST">
+                   <div class="row">
+                           <div class="input-field col s5">
+                                   <select name="source">
+                                       <option value="" disabled selected>Source</option>
+                                       <option value="1">A</option>
+                                       <option value="2">B</option>
+                                       <option value="3">C</option>
+                                       <option value="4">D</option>
+                                       <option value="5">E</option>
+                                   </select>
+                                   <label>Source</label>
+                               </div>
+      
+                               <div class="input-field col s5">
+                                   <select name="destination">
+                                       <option value="" disabled selected>Destination</option>
+                                       <option value="1">A</option>
+                                       <option value="2">B</option>
+                                       <option value="3">C</option>
+                                       <option value="4">D</option>
+                                       <option value="5">E</option>
+                                   </select>
+                                   <label>Destination</label>
+                               </div>
+                       <div class="row">
+                           <p class="range-field col s6">
+                               <input name="vacancy" type="range" id="test5" min="0" max="6" />
+                           </p>
+
+                           <div class="input-field col s6">
+                               <input id="time" type="text" name="time" >
+                               <label for="time">Time</label>
+                           </div>
+                       </div>
+
+                       <div class="row">
+                           <div class="input-field col s12">
+                               <input id="cost" type="text" name="cost" >
+                               <label for="cost">Cost</label>
+                           </div>
+                       </div>
+
+                 <div class="row">
+                   <button class="btn waves-effect waves-light" type="submit" name="action">Create Pool
+                       <i class="material-icons right">send</i>
+                   </button>
+                 </div>
+      
+               </form>
+             </div>
+           </div>
+
+           <script>
+               document.addEventListener('DOMContentLoaded', function() {
+               var elems = document.querySelectorAll('select');
+               var instances = M.FormSelect.init(elems, {});
+               });
+           </script>
+
+{% endblock %} 
+
