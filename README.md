@@ -8,6 +8,6 @@ This project is in development phase.
 
 **Back-end:** [Python](https://www.python.org/), [Flask](http://flask.pocoo.org/), [Jinja2](http://jinja.pocoo.org/docs/dev/)
 
-**Contributor:  Bhaskar Singh 
-              Vinay Katare
-              Jaspreet Singh
+**Contributor:  Bhaskar Singh,\
+                Vinay Katare,\
+                Jaspreet Singh**
